@@ -1,3 +1,4 @@
+#git.ignore
 @{
     Protocol = [WinSCP.Protocol]::Sftp
     HostName = "34.197.80.109"
