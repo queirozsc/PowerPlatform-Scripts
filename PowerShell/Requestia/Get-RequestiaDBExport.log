@@ -1,0 +1,56 @@
+. 2020-03-03 01:07:47.345 --------------------------------------------------------------------------
+. 2020-03-03 01:07:47.345 WinSCP Versão 5.15.9 (Build 10071) (OS 10.0.17763 - Windows 10 Enterprise)
+. 2020-03-03 01:07:47.345 Configuration: nul
+. 2020-03-03 01:07:47.345 Log level: Normal
+. 2020-03-03 01:07:47.345 Local account: HOBRASIL\sergio.queiroz
+. 2020-03-03 01:07:47.345 Working directory: C:\Program Files (x86)\WinSCP
+. 2020-03-03 01:07:47.345 Process ID: 20112
+. 2020-03-03 01:07:47.347 Command-line: "C:\Program Files (x86)\WinSCP\winscp.exe" /xmllog="C:\Users\sergio.queiroz\AppData\Local\Temp\wscp1E0C.024A55D7.tmp" /xmlgroups /xmllogrequired /nointeractiveinput /dotnet=5.15.9  /ini=nul /log="C:\Users\sergio.queiroz\OneDrive - Opty\Repositorios\PowerPlatform-Scripts\PowerShell\Requestia\Get-RequestiaDBExport.log"  /console /consoleinstance=_7692_62288957_772
+. 2020-03-03 01:07:47.347 Time zone: Current: GMT-3 (Hora oficial do Brasil), No DST
+. 2020-03-03 01:07:47.347 Warning: System option "Automatically adjust clock for Daylight Saving Time" is disabled, timestamps will not be represented correctly
+. 2020-03-03 01:07:47.347 Login time: terça-feira, 3 de março de 2020 01:07:47
+. 2020-03-03 01:07:47.347 --------------------------------------------------------------------------
+. 2020-03-03 01:07:47.347 Script: Retrospectively logging previous script records:
+> 2020-03-03 01:07:47.347 Script: option batch on
+< 2020-03-03 01:07:47.347 Script: batch           on        
+< 2020-03-03 01:07:47.347 Script: reconnecttime   120       
+> 2020-03-03 01:07:47.347 Script: option confirm off
+< 2020-03-03 01:07:47.347 Script: confirm         off       
+> 2020-03-03 01:07:47.347 Script: option reconnecttime 120
+< 2020-03-03 01:07:47.347 Script: reconnecttime   120       
+> 2020-03-03 01:07:47.347 Script: open sftp://sftpuser@34.197.80.109 -hostkey="ssh-rsa 1024 qx844DYjTRTN8gNCw2ykXmlCTecivZpmophsvHyZJCA=" -privatekey="\sftpuserPrivate.ppk" -timeout=15 -passphrase=***
+. 2020-03-03 01:07:47.347 --------------------------------------------------------------------------
+. 2020-03-03 01:07:47.348 Session name: sftpuser@34.197.80.109 (Ad-Hoc site)
+. 2020-03-03 01:07:47.348 Host name: 34.197.80.109 (Port: 22)
+. 2020-03-03 01:07:47.348 User name: sftpuser (Password: No, Key file: Yes, Passphrase: Yes)
+. 2020-03-03 01:07:47.348 Tunnel: No
+. 2020-03-03 01:07:47.348 Transfer Protocol: SFTP
+. 2020-03-03 01:07:47.348 Ping type: Off, Ping interval: 30 sec; Timeout: 15 sec
+. 2020-03-03 01:07:47.348 Disable Nagle: No
+. 2020-03-03 01:07:47.348 Proxy: None
+. 2020-03-03 01:07:47.348 Send buffer: 262144
+. 2020-03-03 01:07:47.348 SSH protocol version: 2; Compression: No
+. 2020-03-03 01:07:47.348 Bypass authentication: No
+. 2020-03-03 01:07:47.348 Try agent: Yes; Agent forwarding: No; TIS/CryptoCard: No; KI: Yes; GSSAPI: Yes
+. 2020-03-03 01:07:47.348 GSSAPI: Forwarding: No; Libs: gssapi32,sspi,custom; Custom: 
+. 2020-03-03 01:07:47.348 Ciphers: aes,chacha20,blowfish,3des,WARN,arcfour,des; Ssh2DES: No
+. 2020-03-03 01:07:47.348 KEX: ecdh,dh-gex-sha1,dh-group14-sha1,rsa,WARN,dh-group1-sha1
+. 2020-03-03 01:07:47.348 SSH Bugs: Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto
+. 2020-03-03 01:07:47.348 Simple channel: Yes
+. 2020-03-03 01:07:47.348 Return code variable: Autodetect; Lookup user groups: Auto
+. 2020-03-03 01:07:47.348 Shell: default
+. 2020-03-03 01:07:47.348 EOL: LF, UTF: Auto
+. 2020-03-03 01:07:47.348 Clear aliases: Yes, Unset nat.vars: Yes, Resolve symlinks: Yes; Follow directory symlinks: No
+. 2020-03-03 01:07:47.348 LS: ls -la, Ign LS warn: Yes, Scp1 Comp: No; Exit code 1 is error: No
+. 2020-03-03 01:07:47.348 SFTP Bugs: Auto,Auto
+. 2020-03-03 01:07:47.348 SFTP Server: default
+. 2020-03-03 01:07:47.348 Local directory: default, Remote directory: home, Update: Yes, Cache: Yes
+. 2020-03-03 01:07:47.348 Cache directory changes: Yes, Permanent: Yes
+. 2020-03-03 01:07:47.348 Recycle bin: Delete to: No, Overwritten to: No, Bin path: 
+. 2020-03-03 01:07:47.348 DST mode: Unix
+. 2020-03-03 01:07:47.348 --------------------------------------------------------------------------
+. 2020-03-03 01:07:47.348 Looking up host "34.197.80.109" for SSH connection
+. 2020-03-03 01:07:47.349 Connecting to 34.197.80.109 port 22
+. 2020-03-03 01:08:08.349 Failed to connect to 34.197.80.109: Network error: Connection timed out
+. 2020-03-03 01:08:08.349 Knocking FTP port.
+. 2020-03-03 01:08:10.355 FTP port did not open.
