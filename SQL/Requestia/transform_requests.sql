@@ -48,5 +48,27 @@ AS
     FROM dbo.requests r
         JOIN dbo.ho_aux_requests a
             ON r.request = a.request;
+
+    /* unidade do chamado */
+    UPDATE requests
+    SET unidade_atendimento = UPPER(a.qanswer)
+    FROM requests r
+        JOIN qanswer a
+            ON qsessionform = a.qsession
+    WHERE a.qsession = qsessionform
+        AND a.question = 'GER_CONSUL_EMPCNPJ';
+
+    /* cnpj da unidade */
+    UPDATE requests
+    SET cnpj = dbo.extract_string_numbers(unidade_atendimento)
+    WHERE NOT dbo.extract_string_numbers(unidade_atendimento) IS NULL;
+
+    /* mnemonico da hierarquia da unidade */
+    UPDATE requests
+    SET hierarquia = UPPER(u.hierarquia)
+    FROM requests r
+        JOIN unidade_negocio u
+            ON r.cnpj = u.cnpj;
+    
 END
 GO

@@ -68,9 +68,56 @@ CREATE TABLE dbo.requests
     , prazo_resolucao VARCHAR(15) DEFAULT 'DENTRO DO PRAZO'
     , prazo_resposta VARCHAR(15) DEFAULT 'DENTRO DO PRAZO'
     , situacao VARCHAR(20) DEFAULT 'ABERTO'
-    , tempo_resposta FLOAT    
+    , tempo_resposta FLOAT
+    , unidade_atendimento VARCHAR(400)
+    , cnpj VARCHAR(18) DEFAULT '00.649.756/0006-70'
+    , hierarquia VARCHAR(20)
 )
 GO
+CREATE INDEX request_ix_request ON requests (request)
+GO
+CREATE INDEX request_ix_closed ON requests (closed)
+GO
+CREATE INDEX request_ix_qsessionform ON requests (qsessionform)
+GO
+CREATE INDEX request_ix_data_abertura ON requests (data_abertura)
+GO
+CREATE INDEX request_ix_data_encerramento ON requests (data_encerramento)
+GO
+CREATE INDEX request_ix_percentual_sla ON requests (percentual_sla)
+GO
+CREATE INDEX request_ix_prazo_resolucao ON requests (prazo_resolucao)
+GO
+CREATE INDEX request_ix_prazo_resposta ON requests (prazo_resposta)
+GO
+CREATE INDEX request_ix_situacao ON requests (situacao)
+GO
+CREATE INDEX request_ix_unidade_atendimento ON requests (unidade_atendimento)
+GO
+CREATE INDEX request_ix_cnpj ON requests (cnpj)
+GO
+CREATE INDEX request_ix_hierarquia ON requests (hierarquia)
+GO
+/*
 SELECT TOP 100 * 
 FROM requests
 ORDER BY request DESC
+
+SELECT unidade_atendimento, dbo.extract_string_numbers(unidade_atendimento),  count(1)
+FROM requests
+GROUP BY unidade_atendimento, dbo.extract_string_numbers(unidade_atendimento)
+ORDER BY 2 DESC
+
+SELECT *
+FROM unidade_negocio
+WHERE cnpj like '%00.649.756/0001-66%'
+
+SELECT dbo.extract_string_numbers('HOB HOSPITAL OFTALMOLÓGICO DE BRASÍLIA LTDA 00.649.756/0001-66')
+    , PATINDEX('%__.___.___/____-__%', 'HOB HOSPITAL OFTALMOLÓGICO DE BRASÍLIA LTDA 00.649.756/0001-66')
+    , STUFF('HOB HOSPITAL OFTALMOLÓGICO DE BRASÍLIA LTDA 00.649.756/0001-66', 45, 18, '')
+
+SELECT value
+FROM STRING_SPLIT('HOB HOSPITAL OFTALMOLÓGICO DE BRASÍLIA LTDA 00.649.756/0001-66', ' ')
+WHERE RTRIM(value) <> ''
+    AND PATINDEX('[0-9]%', value) = 1
+*/

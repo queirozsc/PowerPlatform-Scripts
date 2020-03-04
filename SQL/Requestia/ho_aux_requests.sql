@@ -16,4 +16,8 @@ CREATE TABLE dbo.ho_aux_requests
     , data_processamento DATETIME NOT NULL CONSTRAINT ho_aux_request_df_timestamp DEFAULT GETDATE()
 )
 GO
+CREATE INDEX ho_aux_request_ix_request ON ho_aux_requests (request)
+GO
+/*
 SELECT * from ho_aux_requests
+*/
