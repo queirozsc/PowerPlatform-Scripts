@@ -72,6 +72,7 @@ CREATE TABLE dbo.requests
     , unidade_atendimento VARCHAR(400)
     , cnpj VARCHAR(18) DEFAULT '00.649.756/0006-70'
     , hierarquia VARCHAR(20)
+    , 
 )
 GO
 CREATE INDEX request_ix_request ON requests (request)
@@ -101,12 +102,30 @@ GO
 /*
 SELECT TOP 100 * 
 FROM requests
+WHERE hierarquia LIKE 'BR|NE%'
+    AND category = 'Tecnologia da Informacao'
 ORDER BY request DESC
+
+SELECT *
+FROM requests
+WHERE hierarquia IS NULL
 
 SELECT unidade_atendimento, dbo.extract_string_numbers(unidade_atendimento),  count(1)
 FROM requests
 GROUP BY unidade_atendimento, dbo.extract_string_numbers(unidade_atendimento)
 ORDER BY 2 DESC
+
+UPDATE requests
+SET cnpj = '00.659.756/0005-90'
+WHERE unidade_atendimento = 'HOB HOSPITAL OFTALMOLÓGICO DE BRASÍLIA LTDA (HOLDING) 00.659.756 / 0005-90'
+
+SELECT unidade_atendimento, count(1)
+FROM requests
+GROUP BY unidade_atendimento
+ORDER BY 2 desc
+
+CLÍNICA E CIRURGIA DE OLHOS DR. ARMANDO A GUESER LTDA 00.181.085/0006-66 (COSC - SÃO CRISTOVÃO)
+
 
 SELECT *
 FROM unidade_negocio
@@ -120,4 +139,7 @@ SELECT value
 FROM STRING_SPLIT('HOB HOSPITAL OFTALMOLÓGICO DE BRASÍLIA LTDA 00.649.756/0001-66', ' ')
 WHERE RTRIM(value) <> ''
     AND PATINDEX('[0-9]%', value) = 1
+
+
+
 */

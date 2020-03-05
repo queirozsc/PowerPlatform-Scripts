@@ -63,6 +63,12 @@ AS
     SET cnpj = dbo.extract_string_numbers(unidade_atendimento)
     WHERE NOT dbo.extract_string_numbers(unidade_atendimento) IS NULL;
 
+    /* corrige espacos no cnpj */
+    UPDATE requests
+    SET cnpj = '00.659.756/0005-90'
+    WHERE unidade_atendimento = 'HOB HOSPITAL OFTALMOLÓGICO DE BRASÍLIA LTDA (HOLDING) 00.659.756 / 0005-90';
+
+
     /* mnemonico da hierarquia da unidade */
     UPDATE requests
     SET hierarquia = UPPER(u.hierarquia)
