@@ -36,10 +36,34 @@ AS
         WHEN UPPER(rstatus) LIKE '%DEMANDA%NÃO%SOLUC%' THEN 'AGUARDANDO ATENDIMENTO'
     END;
 
+    /* calculos de tempos */
+    UPDATE dbo.requests
+    SET tempo_abertura = CASE
+                            WHEN closed = '1' THEN dbo.working_hours_between_dates(data_abertura, data_encerramento)
+                            ELSE dbo.working_hours_between_dates(data_abertura, GETDATE())
+                        END
+    , tempo_ultima_acao = CASE
+                            WHEN closed = '1' THEN dbo.working_hours_between_dates(data_ultima_acao, data_encerramento)
+                            ELSE dbo.working_hours_between_dates(data_ultima_acao, GETDATE())
+                        END
+    , tempo_resposta = CASE
+                            WHEN closed = '1' THEN dbo.working_hours_between_dates(data_resposta, data_encerramento)
+                            ELSE dbo.working_hours_between_dates(data_resposta, GETDATE())
+                        END
+    , tempo_resolucao = CASE
+                            WHEN closed = '1' THEN dbo.working_hours_between_dates(data_resolucao, data_encerramento)
+                            ELSE dbo.working_hours_between_dates(data_resolucao, GETDATE())
+                        END;
+
     /* situacao do chamado */
     UPDATE dbo.requests
     SET situacao = 'FECHADO'
     WHERE closed = '1';
+
+    /* chamados que sairam da fila */
+    UPDATE dbo.requests
+    SET fila_analistas = 'NAO'
+    WHERE groupanal = 0;
 
     /* sla do chamado */
     UPDATE dbo.requests

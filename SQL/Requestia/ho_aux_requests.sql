@@ -19,5 +19,7 @@ GO
 CREATE INDEX ho_aux_request_ix_request ON ho_aux_requests (request)
 GO
 /*
-SELECT * from ho_aux_requests
+SELECT TOP 100 * 
+FROM ho_aux_requests
+ORDER BY 1 DESC
 */

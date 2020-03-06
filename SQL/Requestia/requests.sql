@@ -11,7 +11,7 @@ CREATE TABLE dbo.requests
     , client VARCHAR(50)
     , origanal VARCHAR(100)
     , curranal VARCHAR(100)
-    , groupanal VARCHAR(10)
+    , groupanal VARCHAR(1)
     , lastanal VARCHAR(100)
     , lastanlgrp VARCHAR(10)
     , origgroup VARCHAR(100)
@@ -59,20 +59,23 @@ CREATE TABLE dbo.requests
     , qsessionsurvey VARCHAR(10)
     , data_processamento DATETIME NOT NULL CONSTRAINT request_df_timestamp DEFAULT GETDATE()
     , data_abertura DATETIME 
+    , tempo_abertura FLOAT
     , data_encerramento DATETIME
     , data_ultima_acao DATETIME
+    , tempo_ultima_acao FLOAT
     , data_resposta DATETIME
+    , tempo_resposta FLOAT
     , data_resolucao DATETIME
+    , tempo_resolucao FLOAT
     , estagio VARCHAR(40) DEFAULT 'AGUARDANDO ATENDIMENTO'
     , percentual_sla FLOAT
     , prazo_resolucao VARCHAR(15) DEFAULT 'DENTRO DO PRAZO'
     , prazo_resposta VARCHAR(15) DEFAULT 'DENTRO DO PRAZO'
     , situacao VARCHAR(20) DEFAULT 'ABERTO'
-    , tempo_resposta FLOAT
     , unidade_atendimento VARCHAR(400)
     , cnpj VARCHAR(18) DEFAULT '00.649.756/0006-70'
     , hierarquia VARCHAR(20)
-    , 
+    , fila_analistas VARCHAR(3) DEFAULT 'SIM'
 )
 GO
 CREATE INDEX request_ix_request ON requests (request)
@@ -98,6 +101,8 @@ GO
 CREATE INDEX request_ix_cnpj ON requests (cnpj)
 GO
 CREATE INDEX request_ix_hierarquia ON requests (hierarquia)
+GO
+CREATE INDEX request_ix_fila_analistas ON requests (fila_analistas)
 GO
 /*
 SELECT TOP 100 * 
