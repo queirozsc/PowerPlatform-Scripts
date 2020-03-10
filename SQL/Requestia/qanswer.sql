@@ -9,7 +9,7 @@ CREATE TABLE dbo.qanswer
 (
     qsession VARCHAR(20)
     ,  question VARCHAR(400)
-    , qanswer VARCHAR(MAX)
+    , qanswer VARCHAR(400)
     , qanswered VARCHAR(10)
     , qanswerdate VARCHAR(20)
     , qshow VARCHAR(10)
